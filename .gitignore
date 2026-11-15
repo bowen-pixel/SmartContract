@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+channel-lab/out/
+channel-lab/cache/
+channel-lab/broadcast/
+channel-lab/lcov.info
+channel-lab/coverage/
+channel-lab/node_modules/

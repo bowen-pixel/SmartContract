@@ -1,0 +1,36 @@
+name: Contracts
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: channel-lab
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: v1.9.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: channel-lab/package-lock.json
+      - run: forge fmt --check
+      - run: forge build
+      - run: forge test -vv
+      - run: forge coverage
+      - run: npm ci --ignore-scripts
+      - run: npm run demo:intro
+      - run: npm run demo
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-security.txt
+      - run: slither . --filter-paths 'lib/' --exclude-dependencies --fail-none

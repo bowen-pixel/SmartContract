@@ -1,0 +1,13 @@
+{
+  "name": "smartcontract-reference",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "demo": "node script/demo.mjs",
+    "demo:intro": "node script/intro-demo.mjs"
+  },
+  "dependencies": {
+    "ethers": "6.15.0"
+  }
+}

@@ -1,0 +1,6 @@
+[submodule "channel-lab/lib/forge-std"]
+	path = channel-lab/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std.git
+[submodule "channel-lab/lib/openzeppelin-contracts"]
+	path = channel-lab/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts.git

@@ -1,0 +1,43 @@
+{
+  "analyzer": "slither-analyzer 0.11.3",
+  "success": true,
+  "scope": "src; dependencies excluded",
+  "findings": [
+    {
+      "check": "timestamp",
+      "impact": "Low",
+      "confidence": "Medium",
+      "description": "SimplePaymentChannel.claimTimeout() (src/SimplePaymentChannel.sol#23-26) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp < expiration (src/SimplePaymentChannel.sol#24)\n"
+    },
+    {
+      "check": "timestamp",
+      "impact": "Low",
+      "confidence": "Medium",
+      "description": "SimplePaymentChannel.settle(uint256,bytes) (src/SimplePaymentChannel.sol#15-20) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp >= expiration (src/SimplePaymentChannel.sol#16)\n"
+    },
+    {
+      "check": "timestamp",
+      "impact": "Low",
+      "confidence": "Medium",
+      "description": "LongLivedPaymentChannel._requireActive() (src/LongLivedPaymentChannel.sol#51-54) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- state == State.Closing && block.timestamp >= deadline (src/LongLivedPaymentChannel.sol#53)\n"
+    },
+    {
+      "check": "timestamp",
+      "impact": "Low",
+      "confidence": "Medium",
+      "description": "LongLivedPaymentChannel.finalizeTimeout() (src/LongLivedPaymentChannel.sol#45-49) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp < deadline (src/LongLivedPaymentChannel.sol#47)\n"
+    },
+    {
+      "check": "low-level-calls",
+      "impact": "Informational",
+      "confidence": "High",
+      "description": "Low level call in PaymentChannelBase.withdrawPayout() (src/PaymentChannelBase.sol#75-84):\n\t- (success,None) = address(msg.sender).call{value: amount}() (src/PaymentChannelBase.sol#82)\n"
+    },
+    {
+      "check": "immutable-states",
+      "impact": "Optimization",
+      "confidence": "High",
+      "description": "PaymentChannelBase.totalDeposited (src/PaymentChannelBase.sol#22) should be immutable \n"
+    }
+  ]
+}
